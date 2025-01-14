@@ -1,4 +1,5 @@
-package seminars.first.Shop;
+import seminars.first.Shop.Product;
+import seminars.first.Shop.Shop;
 
 import java.util.ArrayList;
 import java.util.List;

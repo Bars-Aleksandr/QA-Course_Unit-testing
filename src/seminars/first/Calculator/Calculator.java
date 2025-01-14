@@ -1,11 +1,37 @@
 package seminars.first.Calculator;
 
+import java.util.Scanner;
+
 public class Calculator {
+    private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.printf("Результат сложения: %s\n", calculation(2, 3, '+'));
-        System.out.printf("Результат сложения: %s\n", calculation(4, 3, '-'));
-        System.out.printf("Результат сложения: %s\n", calculation(2, 3, '*'));
-        System.out.printf("Результат деления: %s\n", calculation(25, 5, '/'));
+        int firstOperand = getOperand();
+        int secondOperand = getOperand();
+        char operator = getOperator();
+        int result = calculation(firstOperand, secondOperand,operator);
+        System.out.println("Результат операции " + operator + " = " + result);
+//        scanner.close();
+    }
+    public static char getOperator(){
+        System.out.println("Введите оператор:");
+        char operator = scanner.next().charAt(0);
+        return operator;
+    }
+    public static int getOperand(){
+        System.out.println("Введите число :");
+        int operand;
+        if (scanner.hasNextInt()){
+            operand = scanner.nextInt();
+        } else {
+            System.out.println("Это не целое число. Попробуйте еще");
+            if (scanner.hasNextInt()){
+                scanner.next();
+                operand = getOperand();
+            } else {
+                throw new IllegalStateException("Ошибка в вводимых данных");
+            }
+        }
+        return operand;
     }
     public static int calculation(int firstOperand, int secondOperand, char operator) {
         int result;
