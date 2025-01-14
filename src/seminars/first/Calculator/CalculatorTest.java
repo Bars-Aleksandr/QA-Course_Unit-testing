@@ -79,7 +79,7 @@ public class CalculatorTest {
         list.add("abc");
         list.add("def");
         list.add("ghi");
-        assertThat(list).hasSize(4).contains("acb", "def").doesNotContain("ghi");
+        assertThat(list).hasSize(3).contains("abc", "def").doesNotContain("gih");
         //HW : Задание 1.
         //В классе Calculator создайте метод calculateDiscount, который принимает сумму покупки и процент скидки и
         //возвращает сумму с учетом скидки.
@@ -88,9 +88,11 @@ public class CalculatorTest {
         assertThat(Calculator.calculatingDiscount(60,15)).isEqualTo(51);
         assertThat(Calculator.calculatingDiscount(1,15)).isEqualTo(0.85);
         assertThat(Calculator.calculatingDiscount(1,0)).isEqualTo(1);
+        assertThat(Calculator.calculatingDiscount(0,20)).isEqualTo(0);
         assertThat(Calculator.calculatingDiscount(100,100)).isEqualTo(0);
         assertThatThrownBy(() -> Calculator.calculatingDiscount(-100, 10)).isInstanceOf(ArithmeticException.class);
         assertThatThrownBy(() -> Calculator.calculatingDiscount(100, -10)).isInstanceOf(ArithmeticException.class);
+        assertThatThrownBy(() -> Calculator.calculatingDiscount(100,101)).isInstanceOf(ArithmeticException.class);
         assertThatThrownBy(() -> Calculator.calculatingDiscount(100,101)).isInstanceOf(ArithmeticException.class);
     }
 

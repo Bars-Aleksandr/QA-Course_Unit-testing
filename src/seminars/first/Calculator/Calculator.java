@@ -51,6 +51,7 @@ public class Calculator {
     public static double calculatingDiscount(double purchaseAmount, int discountAmount) {
         // purchaseAmount - сумма покупки
         // discountAmount - размер скидки
+
        if (purchaseAmount < 0 || discountAmount < 0 || discountAmount > 100){
            throw new ArithmeticException("Недопустимые аргументы: сумма покупки не может быть неотрицательна, а размер скидки должен быть в диапазоне от 0 до 100.");
        } else return purchaseAmount - purchaseAmount * discountAmount / 100; // Метод должен возвращать сумму покупки со скидкой
